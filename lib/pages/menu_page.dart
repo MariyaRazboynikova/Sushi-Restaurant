@@ -24,6 +24,9 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
       ),
+      body: Column(
+        children: [Text('data')],
+      ),
     );
   }
 }
