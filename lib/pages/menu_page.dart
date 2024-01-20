@@ -24,8 +24,32 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
       ),
-      body: Column(
-        children: [Text('data')],
+      body: ListView(
+        children: [
+          const SizedBox(height: 25),
+
+          //shop subtitle
+          Center(
+            child: Text(
+              "Pick from selected list of premium products",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+            ),
+          ),
+
+          //product list
+          SizedBox(
+            height: 550,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.all(15),
+              itemBuilder: (context, index) {
+                //get each individual product  from shop
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
