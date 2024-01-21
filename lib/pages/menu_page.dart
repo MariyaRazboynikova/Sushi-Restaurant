@@ -41,10 +41,12 @@ class _MenuPageState extends State<MenuPage> {
                 borderRadius: BorderRadius.circular(20),
               ),
               margin: const EdgeInsets.symmetric(horizontal: 25),
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //text message
                       Text(
@@ -66,7 +68,10 @@ class _MenuPageState extends State<MenuPage> {
                   ),
 
                   //image
-                  Image.asset('lib/images/free-icon-sushi-2713959.png')
+                  Image.asset(
+                    'lib/images/free-icon-sushi-2713959.png',
+                    height: 100,
+                  ),
                 ],
               ),
             )
