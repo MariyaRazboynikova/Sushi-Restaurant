@@ -66,6 +66,7 @@ class _MenuPageState extends State<MenuPage> {
                   ),
 
                   //image
+                  Image.asset('lib/images/free-icon-sushi-2713959.png')
                 ],
               ),
             )
