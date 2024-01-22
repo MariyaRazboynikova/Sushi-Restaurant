@@ -17,6 +17,23 @@ class FoodDetailesPage extends StatefulWidget {
 }
 
 class _FoodDetailesPageState extends State<FoodDetailesPage> {
+  //quantity
+  int quantityCount = 0;
+
+  //decrement quantity
+  void decrementQuantity() {
+    setState(() {
+      quantityCount--;
+    });
+  }
+
+  //increment quantity
+  void incrementQuantity() {
+    setState(() {
+      quantityCount++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,11 +116,76 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
           //price + quantity + add to card button
           Container(
             color: primaryColor,
+            padding: EdgeInsets.all(25),
             child: Column(
+              children: [
+                Row(
+                  children: [
+                    //price
+                    Text(
+                      "\$" + widget.food.price,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    //quantity
+                    Row(
+                      children: [
+                        //minus button
+                        Container(
+                          decoration: BoxDecoration(
+                            color: secondaryColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.white,
+                            ),
+                            onPressed: decrementQuantity,
+                          ),
+                        ),
+
+                        //quantity count
+                        SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              quantityCount.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        //plus button
+                        Container(
+                          decoration: BoxDecoration(
+                            color: secondaryColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                            onPressed: incrementQuantity,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
                 //price+quantity
 
                 //add to cart button
-                ),
+              ],
+            ),
           ),
         ],
       ),
