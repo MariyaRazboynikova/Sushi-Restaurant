@@ -6,6 +6,7 @@ import 'package:sushi_restaurant/themes/colors.dart';
 
 import '../components/drawer.dart';
 import '../components/food_tile.dart';
+import 'food_detailes_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({
@@ -35,6 +36,14 @@ class _MenuPageState extends State<MenuPage> {
       rating: '4,7',
     ),
   ];
+
+  //navigate to food item detailes page
+  void NavigateToFoodDetailes(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => FoodDetailesPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +84,7 @@ class _MenuPageState extends State<MenuPage> {
                       'Скидка 30% на первый заказ',
                       style: GoogleFonts.dmSerifDisplay(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
 
@@ -92,7 +101,7 @@ class _MenuPageState extends State<MenuPage> {
                 //image
                 Image.asset(
                   'lib/images/free-icon-ramen-2714030.png',
-                  height: 100,
+                  height: 70,
                 ),
               ],
             ),
@@ -102,18 +111,18 @@ class _MenuPageState extends State<MenuPage> {
 
           //search bar
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  hintText: 'Поиск...'),
             ),
           ),
 
@@ -121,7 +130,7 @@ class _MenuPageState extends State<MenuPage> {
 
           //menu list
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text('Меню',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -138,50 +147,72 @@ class _MenuPageState extends State<MenuPage> {
               itemCount: foodMenu.length,
               itemBuilder: (context, index) => FoodTile(
                 food: foodMenu[index],
+                onTap: () {},
               ),
             ),
           ),
 
-          const SizedBox(height: 25),
+          const SizedBox(height: 10),
 
           //popular food
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.circular(20),
-            ),
-            margin: const EdgeInsets.only(left: 25, right: 25, top: 25),
-            child: Row(
-              children: [
-                //image
-                Image.asset(
-                  'lib/images/free-icon-sushi-roll-2713978.png',
-                  height: 60,
-                ),
-                //name and price
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //name
-                    Text(
-                      'Калифорния',
-                      style: GoogleFonts.dmSerifDisplay(
-                        fontSize: 18,
-                        color: Colors.grey[800],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 15.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              margin: const EdgeInsets.only(left: 25, right: 25, top: 25),
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      //image
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: Image.asset(
+                          'lib/images/free-icon-sushi-roll-2713978.png',
+                          height: 60,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
 
-                    //price
-                    Text(
-                      '\$340.00',
-                      style: TextStyle(
-                        color: Colors.grey[800],
+                      const SizedBox(height: 20),
+
+                      //name and price
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          //name
+                          Text(
+                            'Калифорния',
+                            style: GoogleFonts.dmSerifDisplay(
+                              fontSize: 18,
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+
+                          //price
+                          Text(
+                            '\$340.00',
+                            style: TextStyle(
+                              color: Colors.grey[800],
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  ),
+                  //heart
+                  const Icon(
+                    Icons.favorite_outline,
+                    color: Colors.grey,
+                    size: 28,
+                  ),
+                ],
+              ),
             ),
           )
         ],
