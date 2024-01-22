@@ -134,13 +134,56 @@ class _MenuPageState extends State<MenuPage> {
           //popular food
           Expanded(
             child: ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemCount: foodMenu.length,
               itemBuilder: (context, index) => FoodTile(
                 food: foodMenu[index],
               ),
             ),
           ),
+
+          const SizedBox(height: 25),
+
           //popular food
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            margin: const EdgeInsets.only(left: 25, right: 25, top: 25),
+            child: Row(
+              children: [
+                //image
+                Image.asset(
+                  'lib/images/free-icon-sushi-roll-2713978.png',
+                  height: 60,
+                ),
+                //name and price
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //name
+                    Text(
+                      'Калифорния',
+                      style: GoogleFonts.dmSerifDisplay(
+                        fontSize: 18,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+
+                    //price
+                    Text(
+                      '\$340.00',
+                      style: TextStyle(
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
