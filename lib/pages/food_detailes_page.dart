@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sushi_restaurant/components/button.dart';
 import 'package:sushi_restaurant/themes/colors.dart';
 
 import '../models/food_model.dart';
@@ -33,6 +34,9 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
       quantityCount++;
     });
   }
+
+  //add to cart
+  void addToCart() {}
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +103,9 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
                       fontSize: 18,
                     ),
                   ),
+
                   const SizedBox(height: 10),
+
                   Text(
                     'Традиционнное блюдо японской кухни, приготовленное из риса, с добавлением красного мяса, яиц, уксусной приправы, морепродуктов и других ингредиентов. С начала 1980 года суши приобрели огромную популярность в мире.',
                     style: TextStyle(
@@ -116,15 +122,17 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
           //price + quantity + add to card button
           Container(
             color: primaryColor,
-            padding: EdgeInsets.all(25),
+            padding: const EdgeInsets.all(25),
             child: Column(
               children: [
+                //price + quantity
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     //price
                     Text(
                       "\$" + widget.food.price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -180,10 +188,15 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
                       ],
                     )
                   ],
-                )
-                //price+quantity
+                ),
+
+                const SizedBox(height: 25),
 
                 //add to cart button
+                MyButton(
+                  text: 'Добавить в корзину',
+                  onTap: addToCart,
+                ),
               ],
             ),
           ),
