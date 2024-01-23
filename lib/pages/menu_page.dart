@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_restaurant/components/button.dart';
-import 'package:sushi_restaurant/models/food_model.dart';
 import 'package:sushi_restaurant/models/shop.dart';
 import 'package:sushi_restaurant/themes/colors.dart';
-
-import '../components/drawer.dart';
 import '../components/food_tile.dart';
 import 'food_detailes_page.dart';
 
@@ -44,17 +41,25 @@ class _MenuPageState extends State<MenuPage> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey[800],
         elevation: 0,
-        leading: Icon(Icons.menu, color: Colors.grey[900]),
+        leading: const Icon(Icons.menu),
         title: Text(
           'Menu',
           style: GoogleFonts.dmSerifDisplay(
-            fontSize: 15,
-            color: Colors.grey[900],
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          //go to cart button
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, '/cart_page'),
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
       ),
-      drawer: MyDrawer(),
+      // drawer: MyDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
