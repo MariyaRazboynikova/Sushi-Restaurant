@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sushi_restaurant/components/button.dart';
+import 'package:sushi_restaurant/models/shop.dart';
 import 'package:sushi_restaurant/themes/colors.dart';
 
 import '../models/food_model.dart';
@@ -38,7 +40,46 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
   }
 
   //add to cart
-  void addToCart() {}
+  void addToCart() {
+    //only add to cart if there is something in the cart
+    if (quantityCount > 0) {
+      //get access to shop
+      final shop = context.read<Shop>();
+
+      //add to cart
+      shop.addToCart(widget.food, quantityCount);
+
+      //let the user know it was successful
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: primaryColor,
+          content: const Text(
+            'Успешное добавление твоара в корзину',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            //ok button
+            IconButton(
+              onPressed: () {
+                //pop once to remove dialog box
+                Navigator.pop(context);
+
+                //pop again to go previous screen
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.done,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +192,7 @@ class _FoodDetailesPageState extends State<FoodDetailesPage> {
                           ),
                           child: IconButton(
                             icon: const Icon(
-                              Icons.delete_outline,
+                              Icons.remove,
                               color: Colors.white,
                             ),
                             onPressed: decrementQuantity,
