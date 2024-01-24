@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:sushi_restaurant/components/button.dart';
 import 'package:sushi_restaurant/models/shop.dart';
 import 'package:sushi_restaurant/themes/colors.dart';
+import '../components/drawer.dart';
 import '../components/food_tile.dart';
 import 'food_detailes_page.dart';
 
@@ -43,12 +44,13 @@ class _MenuPageState extends State<MenuPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey[800],
         elevation: 0,
-        leading: const Icon(Icons.menu),
-        title: Text(
-          'Menu',
-          style: GoogleFonts.dmSerifDisplay(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        title: Center(
+          child: Text(
+            'Sushi market',
+            style: GoogleFonts.dmSerifDisplay(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         actions: [
@@ -59,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ],
       ),
-      // drawer: MyDrawer(),
+      drawer: MyDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

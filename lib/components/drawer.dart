@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sushi_restaurant/themes/colors.dart';
+
+import 'drawer_list_tile.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -6,19 +9,19 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             children: [
               //drawer header logo
-              DrawerHeader(
+              const DrawerHeader(
                 child: Center(
                   child: Icon(
-                    Icons.shopping_bag,
+                    Icons.ramen_dining,
                     size: 72,
-                    color: Theme.of(context).colorScheme.inversePrimary,
+                    color: const Color.fromARGB(255, 179, 49, 32),
                   ),
                 ),
               ),
@@ -44,17 +47,17 @@ class MyDrawer extends StatelessWidget {
                   Navigator.pushNamed(context, '/cart_page');
                 },
               ),
-              MyListTile(
-                text: "Settings",
-                icon: Icons.settings,
-                onTap: () {
-                  //pop drawer first
-                  Navigator.pop(context);
+              // MyListTile(
+              //   text: "Settings",
+              //   icon: Icons.settings,
+              //   onTap: () {
+              //     //pop drawer first
+              //     Navigator.pop(context);
 
-                  //go to cart page
-                  Navigator.pushNamed(context, '/settings_page');
-                },
-              ),
+              //     //go to cart page
+              //     Navigator.pushNamed(context, '/settings_page');
+              //   },
+              // ),
             ],
           ),
 
@@ -69,34 +72,6 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyListTile extends StatelessWidget {
-  final String text;
-  final IconData icon;
-  final void Function()? onTap;
-
-  const MyListTile({
-    super.key,
-    required this.text,
-    required this.icon,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20.0),
-      child: ListTile(
-        leading: Icon(
-          icon,
-          color: Colors.grey,
-        ),
-        title: Text(text),
-        onTap: onTap,
       ),
     );
   }
